@@ -75,7 +75,7 @@ h6 {
 
 /* Heading Classes - Overwrite tailwind's default behaviour to inherit styles*/
 h1 {
-  font-size: 1.8em;
+  font-size: 2em;
   font-weight: bold;
 }
 

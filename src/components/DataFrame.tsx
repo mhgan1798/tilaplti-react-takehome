@@ -6,7 +6,7 @@ export function DataFrame(props: { data?: { [key: string]: any }[] }) {
   return (
     <>
       <table className="table-auto w-full text-left">
-        <thead>
+        <thead className="text-lg font-bold">
           <tr>
             {Object.keys(props.data[0]).map((key) => {
               return <th>{key}</th>;
