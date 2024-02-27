@@ -50,7 +50,8 @@ export function DataFrame(props: { data?: { [key: string]: any }[] }) {
                       {/* Horizontal Bar */}
                       <div
                         className="h-3 bg-red-500 rounded-md cursor-pointer hover:bg-red-600"
-                        style={{ width: Math.min((vc?.[key] || 0) * 25, 100) }}
+                        // This is a hacky workaround for bar sizing
+                        style={{ width: Math.min((vc?.[key] || 0) * 25, 100) }} 
                       ></div>
                     </div>
                   );

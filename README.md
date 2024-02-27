@@ -10,6 +10,7 @@ Given more time, I would have:
 - Consider error handling for the API call
 - Unit testing of the API call and frontend
 - Allowing filtering when clicking on a histogram bar
+- Properly handled the sizing of each histogram bar
 
 ![alt text](image.png)
 
