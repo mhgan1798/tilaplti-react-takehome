@@ -11,6 +11,8 @@ Given more time, I would have:
 - Unit testing of the API call and frontend
 - Allowing filtering when clicking on a histogram bar
 
+![alt text](image.png)
+
 ## Tipalti React Starter Template
 
 This is a simplified React starter templateconfigured using [Vite](https://vitejs.dev/guide/), a build tool that aims to provide a faster and leaner development experience.
