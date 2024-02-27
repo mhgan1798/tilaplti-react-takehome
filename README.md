@@ -1,3 +1,16 @@
+## Reflection
+I managed to complete the core task using Typescript and Vite, and was in the middle of adding a histogram filter feature for the value counts of each column of the table.
+
+One small struggle I had was learning how to use Vite and how to separate pages into components as I am very much used to NextJS's pages router.
+
+Given more time, I would have:
+- Improved the styling of the table
+- Allowed sorting when clicking on a column
+- Added pagination of the table when rows exceeded a set value (say 100 rows)
+- Consider error handling for the API call
+- Unit testing of the API call and frontend
+- Allowing filtering when clicking on a histogram bar
+
 ## Tipalti React Starter Template
 
 This is a simplified React starter templateconfigured using [Vite](https://vitejs.dev/guide/), a build tool that aims to provide a faster and leaner development experience.
