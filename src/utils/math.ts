@@ -1,4 +1,4 @@
-export function valueCounts(arr: string[] | number[]) {
+export function countValues(arr: string[] | number[]) {
   const counts: Record<string, number> = {};
 
   for (const item of arr) {

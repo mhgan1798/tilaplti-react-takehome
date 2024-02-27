@@ -1,13 +1,24 @@
-import { useMemo, useState } from "react";
-import { valueCounts } from "../utils/math";
+import { useEffect, useMemo, useState } from "react";
+import { countValues } from "../utils/math";
 
 export function DataFrame(props: { data?: { [key: string]: any }[] }) {
   const [filteredData, setFilteredData] = useState([]);
+  const [valueCounts, setValueCounts] = useState<Record<string, number>[]>();
 
   // Usememo to load all keys of the data passed in via props
   const columns = useMemo(() => {
     return props.data && Object.keys(props.data[0]);
   }, [props.data]);
+
+  // Effects
+  useEffect(() => {
+    setValueCounts(
+      columns &&
+        columns.map((col) =>
+          countValues(props.data?.map((data) => data[col]) || [])
+        )
+    );
+  }, [columns]);
 
   // Return no data if data undefined
   if (!props.data) return <>Data has not loaded yet or there is no data.</>;
@@ -22,18 +33,29 @@ export function DataFrame(props: { data?: { [key: string]: any }[] }) {
         {/* Segment for each column */}
         {/* I would have turned valueCounts into a standalone state and update it in a useEffect whenever a bar is clicked. */}
         {columns?.map((col, idx) => {
+          const vc = valueCounts?.[idx];
           return (
             <div className="gap-2" key={idx}>
               {/* Filter segment name */}
               <span className="font-bold">{col}</span>
               {/* Value Counts for each row */}
-              <pre className="whitespace-pre-wrap break-all">
-                {JSON.stringify(
-                  valueCounts(props.data?.map((data) => data[col]) || []),
-                  null,
-                  2
-                )}
-              </pre>
+              <div className="flex flex-col">
+                {Object.keys(valueCounts?.[idx] || []).map((key) => {
+                  return (
+                    <div className="flex items-center gap-2">
+                      {/* Key */}
+                      <div className="w-36 truncate" title={key}>
+                        {key}
+                      </div>
+                      {/* Horizontal Bar */}
+                      <div
+                        className="h-3 bg-red-500 rounded-md cursor-pointer hover:bg-red-600"
+                        style={{ width: Math.min((vc?.[key] || 0) * 25, 100) }}
+                      ></div>
+                    </div>
+                  );
+                })}
+              </div>
             </div>
           );
         })}
