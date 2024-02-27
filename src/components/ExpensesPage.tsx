@@ -8,6 +8,7 @@ export function ExpensesPage() {
   // Fetch the expenses data
   useEffect(() => {
     fetchExpenses().then((data) => {
+        console.log(data)
       setExpenses(data);
     });
   }, []);
